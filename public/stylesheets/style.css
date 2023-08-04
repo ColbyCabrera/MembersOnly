@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+#sign_up {
+  display: flex;
+  flex-direction: column;
+}
+
+#sign_up div {
+  display: flex;
+  flex-direction: column;
+  max-width: 15rem;
+}
+
+#submit {
+  max-width: 10rem;
+}
