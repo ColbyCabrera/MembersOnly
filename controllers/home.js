@@ -10,7 +10,21 @@ exports.index = asyncHandler(async (req, res, next) => {
   res.render("index", { title: "Members Only" });
 });
 
-exports.sign_up = asyncHandler(async (req, res, next) => {
+exports.sign_in_get = asyncHandler(async (req, res, next) => {
+  res.render("sign_in");
+});
+
+exports.sign_in_post = passport.authenticate("local", {
+  successRedirect: "/home",
+  failureRedirect: "/home",
+});
+
+
+exports.sign_up_get = asyncHandler(async (req, res, next) => {
+  res.render("sign_up");
+});
+
+exports.sign_up_post = asyncHandler(async (req, res, next) => {
   console.log("here");
   try {
     bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {

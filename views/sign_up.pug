@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  form#sign_up(action="/sign_up", method="POST")
+    h2 Sign up
+    div
+      lable(for="email") Email: 
+      input#email(type="email", name="email" required)
+    div
+      lable(for="first_name") First name: 
+      input#first_name(type="first_name", name="first_name" required)
+    div
+      lable(for="last_name") Last name: 
+      input#last_name(type="last_name", name="last_name" required)
+    div
+      lable(for="password") Password: 
+      input#password(type="password", name="password" required)
+
+    button#submit(type="submit") Submit 
