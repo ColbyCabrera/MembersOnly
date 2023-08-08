@@ -4,10 +4,15 @@ block content
   form#sign_up(action="/sign_in", method="POST")
     h2 Sign in
     div
-      lable(for="email") Email: 
-      input#email(type="email", name="email" required)
+      lable(for="username") Email: 
+      input#username(type="email", name="username" required)
     div
       lable(for="password") Password: 
       input#password(type="password", name="password" required)
 
     button#submit(type="submit") Submit 
+
+  if messages
+    ul
+      for message in messages
+        li= message

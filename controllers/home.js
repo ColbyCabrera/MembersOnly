@@ -11,12 +11,14 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 exports.sign_in_get = asyncHandler(async (req, res, next) => {
-  res.render("sign_in");
+  console.log(req.user);
+  res.render("sign_in", {messages: req.session.messages});
 });
 
 exports.sign_in_post = passport.authenticate("local", {
   successRedirect: "/home",
-  failureRedirect: "/home",
+  failureRedirect: "/sign_in",
+  failureMessage: true,
 });
 
 
@@ -25,7 +27,6 @@ exports.sign_up_get = asyncHandler(async (req, res, next) => {
 });
 
 exports.sign_up_post = asyncHandler(async (req, res, next) => {
-  console.log("here");
   try {
     bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
       if (err) {

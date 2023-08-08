@@ -10,6 +10,7 @@ a {
 #sign_up {
   display: flex;
   flex-direction: column;
+  gap: 0.4rem
 }
 
 #sign_up div {
@@ -20,4 +21,5 @@ a {
 
 #submit {
   max-width: 10rem;
+  width: 5rem;
 }
