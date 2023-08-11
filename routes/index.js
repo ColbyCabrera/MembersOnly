@@ -22,4 +22,6 @@ router.get('/sign_up', home_controller.sign_up_get);
 // POST for sign up form
 router.post('/sign_up', home_controller.sign_up_post);
 
+router.get("/logout", home_controller.logout_get);
+
 module.exports = router;

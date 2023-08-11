@@ -6,8 +6,11 @@ const session = require("express-session");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
+// When  signed up, allow seeing messages, but require membership status to create
+// member status can only be gained by entering passcode (one time only)
+
 exports.index = asyncHandler(async (req, res, next) => {
-  res.render("index", { title: "Members Only" });
+  res.render("index", { title: "Members Only", user: req.user });
 });
 
 exports.sign_in_get = asyncHandler(async (req, res, next) => {
@@ -64,3 +67,12 @@ exports.sign_up_post = [
     }
   }),
 ];
+
+exports.logout_get = asyncHandler(async (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/home");
+  })
+});
