@@ -14,7 +14,6 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 exports.sign_in_get = asyncHandler(async (req, res, next) => {
-  console.log(req.user);
   res.render("sign_in", { messages: req.session.messages });
 });
 
