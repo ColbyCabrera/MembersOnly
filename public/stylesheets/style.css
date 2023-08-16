@@ -37,3 +37,10 @@ a {
 h1, h2 {
   margin-bottom: 1rem;
 }
+
+hr {
+  margin: 1rem 0;
+  border: 0;
+  height: 1px;
+  background: lightslategray;
+}

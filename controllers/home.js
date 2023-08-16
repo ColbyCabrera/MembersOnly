@@ -59,7 +59,7 @@ exports.sign_up_post = [
           const result = await user.save();
         });
 
-        res.redirect("/home");
+        res.redirect("/sign_in");
       } catch (err) {
         return next(err);
       }

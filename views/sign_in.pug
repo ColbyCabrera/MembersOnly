@@ -10,9 +10,11 @@ block content
       lable(for="password") Password: 
       input#password(type="password", name="password" required)
 
-    button#submit(type="submit") Submit 
+    button#submit(type="submit") Submit
 
   if messages
     ul
       for message in messages
         li= message
+  hr 
+  a(href="/home") Home
