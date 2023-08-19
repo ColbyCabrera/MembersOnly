@@ -1,14 +1,12 @@
-/*const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-  email: { type: String, required: true, maxLength: 30 },
-  first_name: { type: String, required: true, maxLength: 30 },
-  last_name: { type: String, required: true, maxLength: 30 },
-  password: { type: String, required: true },
+const MessageSchema = new Schema({
+  title: { type: String, required: true, maxLength: 30 },
+  text: { type: String, required: true },
+  sender: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  timestamp: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("User", UserSchema);
-
-*/
+module.exports = mongoose.model("Message", MessageSchema);

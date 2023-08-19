@@ -24,4 +24,10 @@ router.post('/sign_up', home_controller.sign_up_post);
 
 router.get("/logout", home_controller.logout_get);
 
+router.get("/messages", home_controller.messages_get);
+
+router.get("/messages_create", home_controller.messages_create_get);
+
+router.post("/messages_create", home_controller.messages_create_post);
+
 module.exports = router;

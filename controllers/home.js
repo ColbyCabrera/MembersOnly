@@ -1,6 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user");
+const Message = require("../models/message");
 const { body, validationResult } = require("express-validator");
 const session = require("express-session");
 const passport = require("passport");
@@ -74,4 +75,29 @@ exports.logout_get = asyncHandler(async (req, res, next) => {
     }
     res.redirect("/home");
   })
+});
+
+exports.messages_get = asyncHandler(async (req, res, next) => {
+    const messages = await Message.find({}).populate('sender');
+
+    console.log(messages);
+
+    res.render("messages", {messages: messages});
+});
+
+exports.messages_create_get = asyncHandler(async (req, res, next) => {
+  const messages = await Message.find({});
+
+
+  res.render("create_message", {messages: messages});
+});
+
+exports.messages_create_post = asyncHandler(async (req, res, next) => {
+  const message = new Message({
+    title: req.body.title,
+    text: req.body.text,
+    sender: req.user._id,
+  });
+  const result = await message.save();
+  res.redirect("/messages");
 });

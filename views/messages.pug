@@ -1,0 +1,13 @@
+extends layout
+block content
+  title Message Display
+  h1 Messages
+  ul
+    each message in messages
+      li
+        h3 <strong>#{message.title}</strong>
+        p #{message.text}
+        p #{message.sender.email}
+        p #{message.timestamp}
+  hr 
+  a(href="/home") Home
