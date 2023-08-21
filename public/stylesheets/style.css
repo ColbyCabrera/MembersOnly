@@ -51,12 +51,13 @@ hr {
 
 #messages hr {
   width: 20rem;
+  background: #ccc;
 }
 
 
 .message {
   margin-bottom: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .message h3 {
@@ -66,5 +67,14 @@ hr {
 .messageText {
   margin-top: 1rem;
   margin-bottom: 0.2rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
+}
+
+#welcome {
+  margin-bottom: 2rem;
+}
+
+ul {
+  padding-top: 0.4rem;
+  padding-left: 1rem;
 }

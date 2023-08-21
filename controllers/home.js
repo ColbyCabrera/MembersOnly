@@ -11,7 +11,12 @@ const bcrypt = require("bcryptjs");
 // member status can only be gained by entering passcode (one time only)
 
 exports.index = asyncHandler(async (req, res, next) => {
-  res.render("index", { title: "Members Only", user: req.user });
+  const messages = await Message.find({});
+  res.render("index", {
+    title: "Members Only",
+    messages: messages,
+    user: req.user,
+  });
 });
 
 exports.sign_in_get = asyncHandler(async (req, res, next) => {

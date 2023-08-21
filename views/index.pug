@@ -3,10 +3,32 @@ extends layout
 block content
   h1= title
   if !user
-    p Welcome to #{title}, sign up to view messages!
+    p#welcome Welcome to #{title}, sign up to view messages!
   else
-    h2 Welcome #{user.first_name}!
+    p#welcome Welcome #{user.first_name}!
 
+    h2 Messages
+    ul#messages
+      each message in messages
+        - 
+          const options = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+          };
+      
+        - const formatter = new Intl.DateTimeFormat('en-US', options);
+        - const formattedDate = formatter.format(message.timestamp);
+
+        li.message
+          h3 <strong>#{message.title}</strong>
+          p.messageText #{message.text}
+          p #{message.sender.email}
+          p #{formattedDate}
+        hr
   br
   if !user
     div
@@ -15,9 +37,9 @@ block content
       a(href ='/sign_up') Sign up
   else
     div
-      a(href='/messages') Message board
-    div
       a(href='/logout') Log out
+    div
+      a(href='/messages_create') Create message
 
   h1= message
   if user
