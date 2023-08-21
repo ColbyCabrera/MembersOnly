@@ -44,3 +44,27 @@ hr {
   height: 1px;
   background: lightslategray;
 }
+
+#messages {
+  list-style: none;
+}
+
+#messages hr {
+  width: 20rem;
+}
+
+
+.message {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.message h3 {
+  font-size: 2rem;
+}
+
+.messageText {
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+  font-size: 2rem;
+}

@@ -74,22 +74,17 @@ exports.logout_get = asyncHandler(async (req, res, next) => {
       return next(err);
     }
     res.redirect("/home");
-  })
+  });
 });
 
 exports.messages_get = asyncHandler(async (req, res, next) => {
-    const messages = await Message.find({}).populate('sender');
-
-    console.log(messages);
-
-    res.render("messages", {messages: messages});
+  const messages = await Message.find({}).populate("sender");
+  res.render("messages", { messages: messages, user: req.user });
 });
 
 exports.messages_create_get = asyncHandler(async (req, res, next) => {
   const messages = await Message.find({});
-
-
-  res.render("create_message", {messages: messages});
+  res.render("create_message", { messages: messages });
 });
 
 exports.messages_create_post = asyncHandler(async (req, res, next) => {

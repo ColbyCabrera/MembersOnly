@@ -2,12 +2,30 @@ extends layout
 block content
   title Message Display
   h1 Messages
-  ul
+  ul#messages
     each message in messages
-      li
+      - 
+        const options = {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        };
+      
+      - const formatter = new Intl.DateTimeFormat('en-US', options);
+      - const formattedDate = formatter.format(message.timestamp);
+
+      li.message
         h3 <strong>#{message.title}</strong>
-        p #{message.text}
+        p.messageText #{message.text}
         p #{message.sender.email}
-        p #{message.timestamp}
-  hr 
-  a(href="/home") Home
+        p #{formattedDate}
+      hr
+
+  div
+    a(href="/home") Home
+  if user
+    div
+      a(href='/messages_create') Create Message
