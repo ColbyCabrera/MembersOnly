@@ -4,9 +4,11 @@ block content
   h1= title
   if !user
     p#welcome Welcome to #{title}, sign up to view messages!
-  else
-    p#welcome Welcome #{user.first_name}!
-
+  else 
+    if user.isMember
+      p#welcome Welcome #{user.first_name}!
+    else
+      p#welcome Welcome #{user.first_name}! To become a member, enter the password <a href="/secret">here</a>.
     h2 Messages
     ul#messages
       each message in messages
@@ -38,8 +40,9 @@ block content
   else
     div
       a(href='/logout') Log out
-    div
-      a(href='/messages_create') Create message
+    if user.isMember
+      div
+        a(href='/messages_create') Create message
 
   h1= message
   if user

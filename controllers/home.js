@@ -82,9 +82,8 @@ exports.logout_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.messages_get = asyncHandler(async (req, res, next) => {
-  const messages = await Message.find({}).populate("sender");
-  res.render("messages", { messages: messages, user: req.user });
+exports.secret_get = asyncHandler(async (req, res, next) => {
+  res.render("secret");
 });
 
 exports.messages_create_get = asyncHandler(async (req, res, next) => {
