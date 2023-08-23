@@ -83,8 +83,38 @@ exports.logout_get = asyncHandler(async (req, res, next) => {
 });
 
 exports.secret_get = asyncHandler(async (req, res, next) => {
-  res.render("secret");
+  res.render("secret", { user: req.user });
 });
+
+exports.secret_post = [
+  // Validate password fields REPLACE WITH ENV VARIABLE
+  body("password", "Wrong password").custom((value, { req }) => {
+    return value == "password";
+  }),
+
+  // Process request after validation
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty() || req.user == undefined) {
+      // There are errors, render form again with sanitized values / error messages.
+      console.log(errors);
+      res.render("secret", {
+        title: "Secret password",
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      try {
+        req.user.isMember = true;
+        const result = await User.findByIdAndUpdate(req.user._id, req.user, {});
+        res.redirect("/home");
+      } catch (err) {
+        return next(err);
+      }
+    }
+  }),
+];
 
 exports.messages_create_get = asyncHandler(async (req, res, next) => {
   const messages = await Message.find({});

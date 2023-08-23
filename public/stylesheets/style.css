@@ -17,13 +17,13 @@ a {
   color: #00B7FF;
 }
 
-#sign_up {
+#sign_up, .form {
   display: flex;
   flex-direction: column;
   gap: 0.6rem
 }
 
-#sign_up div {
+#sign_up div, .form div {
   display: flex;
   flex-direction: column;
   max-width: 20rem;
