@@ -50,7 +50,7 @@ hr {
 }
 
 #messages hr {
-  width: 20rem;
+  width: 22rem;
   background: #ccc;
 }
 
@@ -58,6 +58,7 @@ hr {
 .message {
   margin-bottom: 1rem;
   font-size: 1.2rem;
+  max-width: 22rem;
 }
 
 .message h3 {
@@ -65,8 +66,7 @@ hr {
 }
 
 .messageText {
-  margin-top: 1rem;
-  margin-bottom: 0.2rem;
+  margin: 0.6rem 0;
   font-size: 1.8rem;
 }
 

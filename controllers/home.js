@@ -7,11 +7,11 @@ const session = require("express-session");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
-// When  signed up, allow seeing messages, but require membership status to create
-// member status can only be gained by entering passcode (one time only)
+// names visible to members Only
 
 exports.index = asyncHandler(async (req, res, next) => {
-  const messages = await Message.find({});
+  const messages = await Message.find({}).populate("sender");
+  console.log(messages);
   res.render("index", {
     title: "Members Only",
     messages: messages,
@@ -128,5 +128,5 @@ exports.messages_create_post = asyncHandler(async (req, res, next) => {
     sender: req.user._id,
   });
   const result = await message.save();
-  res.redirect("/messages");
+  res.redirect("/home");
 });
