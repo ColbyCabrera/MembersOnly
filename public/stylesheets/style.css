@@ -14,16 +14,18 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
-#sign_up, .form {
+#sign_up,
+.form {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem
+  gap: 0.6rem;
 }
 
-#sign_up div, .form div {
+#sign_up div,
+.form div {
   display: flex;
   flex-direction: column;
   max-width: 20rem;
@@ -34,7 +36,8 @@ a {
   width: 5rem;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin-bottom: 1rem;
 }
 
@@ -53,7 +56,6 @@ hr {
   width: 22rem;
   background: #ccc;
 }
-
 
 .message {
   margin-bottom: 1rem;

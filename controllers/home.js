@@ -7,11 +7,8 @@ const session = require("express-session");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
-// names visible to members Only
-
 exports.index = asyncHandler(async (req, res, next) => {
   const messages = await Message.find({}).populate("sender");
-  console.log(req.user);
   res.render("index", {
     title: "Members Only",
     messages: messages,

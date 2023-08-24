@@ -10,6 +10,7 @@ const logger = require("morgan");
 const User = require("./models/user");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+require("dotenv").config();
 
 const app = express();
 
@@ -17,8 +18,7 @@ const app = express();
 const mongoose = require("mongoose");
 const { error } = require("console");
 mongoose.set("strictQuery", false);
-const mongoDB =
-  "mongodb+srv://admin:test@cluster0.00x8iz9.mongodb.net/MembersApp?retryWrites=true&w=majority";
+const mongoDB = process.env.DB_STRING;
 
 main().catch((err) => console.log(err));
 async function main() {
