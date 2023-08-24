@@ -11,6 +11,7 @@ const bcrypt = require("bcryptjs");
 
 exports.index = asyncHandler(async (req, res, next) => {
   const messages = await Message.find({}).populate("sender");
+  console.log(req.user);
   res.render("index", {
     title: "Members Only",
     messages: messages,
@@ -126,5 +127,10 @@ exports.messages_create_post = asyncHandler(async (req, res, next) => {
     sender: req.user._id,
   });
   const result = await message.save();
+  res.redirect("/home");
+});
+
+exports.message_delete_post = asyncHandler(async (req, res, next) => {
+  await Message.findByIdAndDelete(req.params.id);
   res.redirect("/home");
 });

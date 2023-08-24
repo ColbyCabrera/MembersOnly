@@ -28,9 +28,13 @@ block content
         li.message
           h3 <strong>#{message.title}</strong>
           p.messageText #{message.text}
-          if message.sender && user.isMember
-            p #{message.sender.email}
-          p #{formattedDate}
+          div.info
+            if message.sender && user.isMember
+              p #{message.sender.email}
+            p #{formattedDate}
+            if user.isAdmin
+              form(action=`/message/${message._id}/delete`, method='POST')
+                button(type='submit') Delete
         hr
   br
   if !user

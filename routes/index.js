@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const home_controller = require("../controllers/home");
 
-
 router.get('/', (req, res, next) => {
     res.redirect("/home");
 });
@@ -26,5 +25,7 @@ router.post("/secret", home_controller.secret_post);
 router.get("/messages_create", home_controller.messages_create_get);
 
 router.post("/messages_create", home_controller.messages_create_post);
+
+router.post("/message/:id/delete", home_controller.message_delete_post);
 
 module.exports = router;
