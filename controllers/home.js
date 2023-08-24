@@ -11,7 +11,6 @@ const bcrypt = require("bcryptjs");
 
 exports.index = asyncHandler(async (req, res, next) => {
   const messages = await Message.find({}).populate("sender");
-  console.log(messages);
   res.render("index", {
     title: "Members Only",
     messages: messages,
@@ -98,7 +97,6 @@ exports.secret_post = [
 
     if (!errors.isEmpty() || req.user == undefined) {
       // There are errors, render form again with sanitized values / error messages.
-      console.log(errors);
       res.render("secret", {
         title: "Secret password",
         errors: errors.array(),
